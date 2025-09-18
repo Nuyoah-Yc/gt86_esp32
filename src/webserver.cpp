@@ -146,7 +146,7 @@ void handleConfigJs()
 {
   char temp[200];
   String message;
-  sprintf(temp, "dataConfigJson = '[{ \"modeCurrent\": \"%d\", \"clock24h\": \"%d\", \"pressureBar\": \"%d\", \"temperatureCelsius\": \"%d\", \"o2afr\": \"%d\"  }]';", modeCurrent, clock24h, pressureBar, temperatureCelsius, o2afr);
+  sprintf(temp, "dataConfigJson = '[{ \"modeCurrent\": \"%d\", \"clock24h\": \"%d\", \"o2afr\": \"%d\"  }]';", modeCurrent, clock24h, o2afr);
   message += temp;
 
   server.send(200, "application/javascript", message);
@@ -164,13 +164,9 @@ void handleSpecificArg()
     modeCurrent = server.arg("mode").toInt(); // 更新当前显示模式
   }
 
-  // 处理各类单位设置参数（参数值为"1"/"0"）
+  // 处理配置参数（单位已固定为公制）
   if (server.arg("clock24h")) // 24小时制开关
     clock24h = setIfBool("clock24h");
-  if (server.arg("pressureBar")) // 压力单位切换（bar/psi）
-    pressureBar = setIfBool("pressureBar");
-  if (server.arg("temperatureCelsius")) // 温度单位切换（℃/℉）
-    temperatureCelsius = setIfBool("temperatureCelsius");
   if (server.arg("o2afr")) // 空燃比显示模式（AFR/Lambda）
     o2afr = setIfBool("o2afr");
 

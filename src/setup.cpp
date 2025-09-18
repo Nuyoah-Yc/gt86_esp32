@@ -224,16 +224,7 @@ bool appendJsonFile(String jsonFile)
 void readConfig()
 {
     byte tmp;     // 临时存储字节数据
-    int addr = 0; // EEPROM地址指针初始化
-    EEPROM.get(addr, tmp);
-    temperatureCelsius = bitRead(tmp, 0);
-
-    addr++; // 地址递增到1
-    // 读取压力单位设置（0-bar，1-psi）
-    EEPROM.get(addr, tmp);
-    pressureBar = bitRead(tmp, 0); // 获取第0位的值
-
-    addr++; // 地址递增到2
+    int addr = 2; // 跳过已移除的单位设置，从地址2开始
     // 读取时间格式设置（0-24小时制，1-12小时制）
     EEPROM.get(addr, tmp);
     clock24h = bitRead(tmp, 0); // 获取第0位的值
@@ -252,8 +243,8 @@ void readConfig()
         modeSaved = CLOCK; // 默认恢复时钟模式
     // 新增串口输出
     Serial.println("\n配置读取成功：");
-    Serial.printf("温度单位: %s\n", temperatureCelsius ? "华氏度" : "摄氏度");
-    Serial.printf("压力单位: %s\n", pressureBar ? "psi" : "bar");
+    Serial.println("温度单位: 摄氏度（固定）");
+    Serial.println("压力单位: bar（固定）");
     Serial.printf("时间格式: %s\n", clock24h ? "24小时制" : "12小时制");
     Serial.printf("空燃比模式: %s\n", o2afr ? "AFR" : "O2");
     Serial.printf("保存的屏幕模式: %d\n", modeSaved);
@@ -262,11 +253,7 @@ void readConfig()
 // 将系统配置写入EEPROM持久化存储
 void writeConfig()
 {
-    // 将温度单位设置写入地址0（1字节存储）
-    EEPROM.put(0, temperatureCelsius); // 温度单位（0-摄氏度，1-华氏度）
-
-    // 将压力单位设置写入地址1（1字节存储）
-    EEPROM.put(1, pressureBar); // 压力单位（0-bar，1-psi）
+    // 跳过已移除的单位设置（地址0和1），从地址2开始
 
     // 将时间格式设置写入地址2（1字节存储）
     EEPROM.put(2, clock24h); // 时间格式（0-24小时制，1-12小时制）

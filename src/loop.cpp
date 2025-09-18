@@ -95,22 +95,17 @@ void loop(void)
         // 0x360报文：油温/水温数据
         if (rxId == 0x360)
         {
-            // 油温处理（原始值-40得到实际温度）
+            // 油温处理（原始值-40得到实际温度，固定摄氏度）
             if (buf[2] > 0 && buf[2] < 200)
             {
                 oilTemp = buf[2] - 40;
-                // 华氏度转换（需要时）
-                if (!temperatureCelsius)
-                    oilTemp = round(oilTemp * 1.8 + 32);
                 lastTempUpdate = millis(); // 记录最后更新时间
             }
 
-            // 水温处理（同油温逻辑）
+            // 水温处理（固定摄氏度）
             if (buf[3] > 0 && buf[3] < 200)
             {
                 coolantTemp = buf[3] - 40;
-                if (!temperatureCelsius)
-                    coolantTemp = round(coolantTemp * 1.8 + 32);
                 lastTempUpdate = millis();
             }
         }
@@ -205,28 +200,15 @@ void loop(void)
     // 油压值转换公式：(原始值 - 零点偏移) × 比例系数
     oilPressure = float((oilPressureOld - oilPressureOffset) * oilPressureScalingFactor);
 
-    // 压力单位处理（bar/psi 自动转换）
-    if (pressureBar)
+    // 固定使用bar（公制单位）处理
+    // PSI转BAR公式：1 psi = 0.0689476 bar
+    oilPressure = oilPressure * 0.0689476;
+    // 保留1位小数（四舍五入）
+    oilPressure = float(round(oilPressure * 10)) / 10;
+    // BAR单位最大值限制（9.9 bar）
+    if (oilPressure >= 10)
     {
-        // PSI转BAR公式：1 psi = 0.0689476 bar
-        oilPressure = oilPressure * 0.0689476;
-        // 保留1位小数（四舍五入）
-        oilPressure = float(round(oilPressure * 10)) / 10;
-        // BAR单位最大值限制（9.9 bar）
-        if (oilPressure >= 10)
-        {
-            oilPressure = 9.9;
-        }
-    }
-    else
-    {
-        // PSI模式直接取整
-        oilPressure = round(oilPressure);
-        // PSI单位最大值限制（150 psi）
-        if (oilPressure > 150)
-        {
-            oilPressure = 150;
-        }
+        oilPressure = 9.9;
     }
 
     if (modeCurrent == CLOCK && (clockHour != now.hour() || clockMinute != now.minute()))

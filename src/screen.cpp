@@ -38,42 +38,27 @@ void drawAfrAndVoltage(bool updateCompleteDisplay)
 }
 void drawCoolantOilTemp(bool updateCompleteDisplay)
 {
-    if (temperatureCelsius)
-        drawTwoValues(iconCoolantWidth, iconCoolantHeight, iconCoolantBits, (char *)String(coolantTemp).c_str(), countDigits(coolantTemp), "C",
-                      iconOilCanWidth, iconOilCanHeight, iconOilCanBits, (char *)String(oilTemp).c_str(), countDigits(oilTemp), "C", updateCompleteDisplay);
-    else
-        drawTwoValues(iconCoolantWidth, iconCoolantHeight, iconCoolantBits, (char *)String(coolantTemp * 1.8 + 32).c_str(), countDigits(coolantTemp * 1.8 + 32), "F",
-                      iconOilCanWidth, iconOilCanHeight, iconOilCanBits, (char *)String(oilTemp * 1.8 + 32).c_str(), countDigits(oilTemp * 1.8 + 32), "F", updateCompleteDisplay);
+    // 固定使用摄氏度显示
+    drawTwoValues(iconCoolantWidth, iconCoolantHeight, iconCoolantBits, (char *)String(coolantTemp).c_str(), countDigits(coolantTemp), "C",
+                  iconOilCanWidth, iconOilCanHeight, iconOilCanBits, (char *)String(oilTemp).c_str(), countDigits(oilTemp), "C", updateCompleteDisplay);
 }
 void drawCoolantTemp(bool updateCompleteDisplay)
 {
-    if (temperatureCelsius)
-        drawSingleValue(iconCoolantWidth, iconCoolantHeight, iconCoolantBits, (char *)String(coolantTemp).c_str(), countDigits(coolantTemp), "C", updateCompleteDisplay);
-    else
-        drawSingleValue(iconCoolantWidth, iconCoolantHeight, iconCoolantBits, (char *)String(oilTemp * 1.8 + 32).c_str(), countDigits(coolantTemp * 1.8 + 32), "F", updateCompleteDisplay);
+    // 固定使用摄氏度显示
+    drawSingleValue(iconCoolantWidth, iconCoolantHeight, iconCoolantBits, (char *)String(coolantTemp).c_str(), countDigits(coolantTemp), "C", updateCompleteDisplay);
 }
 
 void drawOilTemp(bool updateCompleteDisplay)
 {
-    if (temperatureCelsius)
-        drawSingleValue(iconOilCanWidth, iconOilCanHeight, iconOilCanBits, (char *)String(oilTemp).c_str(), countDigits(oilTemp), "C", updateCompleteDisplay);
-    else
-        drawSingleValue(iconOilCanWidth, iconOilCanHeight, iconOilCanBits, (char *)String(oilTemp * 1.8 + 32).c_str(), countDigits(oilTemp * 1.8 + 32), "F", updateCompleteDisplay);
+    // 固定使用摄氏度显示
+    drawSingleValue(iconOilCanWidth, iconOilCanHeight, iconOilCanBits, (char *)String(oilTemp).c_str(), countDigits(oilTemp), "C", updateCompleteDisplay);
 }
 void drawOilPressure(bool updateCompleteDisplay)
 {
-    if (pressureBar)
-    {
-        char oilPressureChar[4];
-        dtostrf(oilPressure, 1, 1, oilPressureChar);
-        drawSingleValue(iconOilCanWidth, iconOilCanHeight, iconOilCanBits, oilPressureChar, 3, "bar", updateCompleteDisplay);
-    }
-    else
-    {
-        char oilPressureChar[4];
-        dtostrf(oilPressure, 1, 0, oilPressureChar);
-        drawSingleValue(iconOilCanWidth, iconOilCanHeight, iconOilCanBits, oilPressureChar, 2, "psi", updateCompleteDisplay);
-    }
+    // 固定使用bar（公制单位）显示
+    char oilPressureChar[4];
+    dtostrf(oilPressure, 1, 1, oilPressureChar);
+    drawSingleValue(iconOilCanWidth, iconOilCanHeight, iconOilCanBits, oilPressureChar, 3, "bar", updateCompleteDisplay);
 
     customDelay(250);
 }

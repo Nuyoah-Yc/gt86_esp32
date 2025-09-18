@@ -14,28 +14,12 @@ void handleModeButton()
         lastModeChange = millis();
         return;
     }
-    // 2号引脚（buttonPin1）长按：根据当前模式切换单位/同步
+    // 2号引脚（buttonPin1）长按：根据当前模式执行特定功能（移除了单位切换）
     if (buttonPin1Pressed != -1 && millis() - buttonPin1Pressed >= 500 && millis() - buttonPin1Pressed < 5000)
     {
         Serial.print("[DEBUG] 长按2号引脚，当前modeCurrent: ");
         Serial.println(modeCurrent);
-        if (modeCurrent == OILTEMP || modeCurrent == COOLANTTEMP || modeCurrent == OILCOOLANTTEMP)
-        {
-            temperatureCelsius = !temperatureCelsius;
-            modeOld = 0;
-            saveConfigFlag = true;
-            Serial.print("[DEBUG] 切换温度单位，当前temperatureCelsius: ");
-            Serial.println(temperatureCelsius ? "华氏度" : "摄氏度");
-        }
-        else if (modeCurrent == OILPRESSURE)
-        {
-            pressureBar = !pressureBar;
-            modeOld = 0;
-            saveConfigFlag = true;
-            Serial.print("[DEBUG] 切换压力单位，当前pressureBar: ");
-            Serial.println(pressureBar ? "psi" : "bar");
-        }
-        else if (modeCurrent == CLOCK)
+        if (modeCurrent == CLOCK)
         {
             syncRTCFlag = true;
             Serial.println("[DEBUG] 触发NTP时间同步");
@@ -47,6 +31,10 @@ void handleModeButton()
             saveConfigFlag = true;
             Serial.print("[DEBUG] 切换空燃比显示模式，当前o2afr: ");
             Serial.println(o2afr ? "AFR" : "Lambda");
+        }
+        else
+        {
+            Serial.println("[DEBUG] 长按无功能（单位已固定为公制）");
         }
         buttonPin1Pressed = -1;
         lastModeChange = millis();

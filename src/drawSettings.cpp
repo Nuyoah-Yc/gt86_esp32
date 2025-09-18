@@ -57,17 +57,9 @@ void drawSettingsUnits(bool updateCompleteDisplay)
 {
     u8g2.clearDisplay(); // 清空显示缓冲区
 
-    // 温度单位显示（第一行）
-    if (temperatureCelsius)
-        u8g2.drawStr(1, 16, "TEMP.: C"); // 摄氏温度
-    else
-        u8g2.drawStr(1, 16, "TEMP.: F"); // 华氏温度
-
-    // 压力单位显示（第二行）
-    if (pressureBar)
-        u8g2.drawStr(1, 32, "PRESSURE: bar"); // 公制单位
-    else
-        u8g2.drawStr(1, 32, "PRESSURE: psi"); // 英制单位
+    // 固定显示公制单位（摄氏度和bar）
+    u8g2.drawStr(1, 16, "TEMP.: C");        // 固定摄氏温度
+    u8g2.drawStr(1, 32, "PRESSURE: bar");   // 固定公制单位
 
     u8g2.sendBuffer(); // 发送缓冲区内容到OLED
 
