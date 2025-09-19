@@ -3,8 +3,7 @@
 #include <ArduinoJson.h>
 #include "esp_task_wdt.h"
 
-void setup(void)
-{
+void setup(void) {
     // 初始化看门狗定时器
     esp_task_wdt_init(60, true);
     esp_task_wdt_add(NULL);
@@ -19,7 +18,7 @@ void setup(void)
 
     Serial.println("Serial OK");
 
-    pinMode(A0, INPUT);                // oil pressure
+    pinMode(A0, INPUT); // oil pressure
     pinMode(buttonPin1, INPUT_PULLUP); // muxed for the 3 buttons
     pinMode(buttonPin2, INPUT_PULLUP); // muxed for the 3 buttons
     pinMode(buttonPin3, INPUT_PULLUP); // 新增第三个按钮
@@ -39,13 +38,10 @@ void setup(void)
 
     Serial.println("EEPROM ok");
 
-    if (CAN0.begin(MCP_STDEXT, CAN_500KBPS, MCP_8MHZ) == CAN_OK)
-    {
+    if (CAN0.begin(MCP_STDEXT, CAN_500KBPS, MCP_8MHZ) == CAN_OK) {
         Serial.println("Can1 MCP2515 Initialized Successfully!");
         customDelay(500);
-    }
-    else
-    {
+    } else {
         Serial.println("Error Initializing MCP2515...");
         customDelay(4000);
     }
@@ -67,7 +63,7 @@ void setup(void)
 
     // --------------------- WiFi 连接优化 ---------------------
     WiFi.setHostname("gt86clock");
-    const char *defaultSSID = "orange";        // 替换为预设的SSID
+    const char *defaultSSID = "orange"; // 替换为预设的SSID
     const char *defaultPassword = "123456789"; // 替换为预设的密码
 
     // 优先尝试连接预设的 WiFi
@@ -76,26 +72,21 @@ void setup(void)
 
     Serial.print("Connecting to WiFi");
     unsigned long startTime = millis();
-    while (WiFi.status() != WL_CONNECTED && millis() - startTime < 20000)
-    {
+    while (WiFi.status() != WL_CONNECTED && millis() - startTime < 20000) {
         vTaskDelay(pdMS_TO_TICKS(500));
         Serial.print(".");
         esp_task_wdt_reset();
         int8_t rssi = WiFi.RSSI();
-        if (rssi < -80)
-        {
+        if (rssi < -80) {
             Serial.printf("\nWeak signal: %ddBm", rssi);
         }
     }
 
-    if (WiFi.status() == WL_CONNECTED)
-    {
+    if (WiFi.status() == WL_CONNECTED) {
         Serial.println("\nConnected to external WiFi!");
         Serial.print("IP Address: ");
         Serial.println(WiFi.localIP());
-    }
-    else
-    {
+    } else {
         Serial.println("\nExternal WiFi connection failed. Starting AP...");
 
         // 配置 WiFiManager 参数
@@ -103,12 +94,10 @@ void setup(void)
         wifiManager.setConfigPortalTimeout(180); // AP 模式超时时间
 
         // 启动 AP 模式（配置门户）
-        if (!wifiManager.startConfigPortal("orangeAP"))
-        { // AP 名称为 orangeAP
+        if (!wifiManager.startConfigPortal("orangeAP")) {
+            // AP 名称为 orangeAP
             Serial.println("Failed to start config portal");
-        }
-        else
-        {
+        } else {
             Serial.println("AP Mode Started. SSID: orangeAP");
             Serial.print("AP IP: ");
             Serial.println(WiFi.softAPIP());
@@ -116,13 +105,10 @@ void setup(void)
     }
 
     // SPIFFS.begin(); // 初始化 SPIFFS
-    if (!SPIFFS.begin(true))
-    {
+    if (!SPIFFS.begin(true)) {
         Serial.println("SPIFFS初始化失败!");
         return;
-    }
-    else
-    {
+    } else {
         Serial.println("SPIFFS初始化成功!");
     }
     server.begin(); // 启动 Web 服务器  默认的端口号是 80
@@ -133,48 +119,41 @@ void setup(void)
     server.on("/date.js", handleDateJs);
     server.on("/config.js", handleConfigJs);
     server.on("/temperature.js", handleTemperatureJs);
-    server.onNotFound([]()
-                      {
-    if (!handleFileRead(server.uri()))
-      server.send(404, "text/plain", "FileNotFound"); });
+    server.onNotFound([]() {
+        if (!handleFileRead(server.uri()))
+            server.send(404, "text/plain", "FileNotFound");
+    });
 
     // 显式初始化 RTC
-    if (!RTC.begin())
-    {
+    if (!RTC.begin()) {
         Serial.println("RTC初始化失败!");
-        while (1)
-            ;
+        while (1);
     }
     now = RTC.now();
     char temp[100];
-    sprintf(temp, "/json/gt86clock_%04d%02d%02d%02d%02d.js", now.year(), now.month(), now.day(), now.hour(), now.minute());
+    sprintf(temp, "/json/gt86clock_%04d%02d%02d%02d%02d.js", now.year(), now.month(), now.day(), now.hour(),
+            now.minute());
     jsonFile += temp;
     // createJsonFile(jsonFile.c_str()); // 将 String 转换为 C 风格字符串
     // 增强错误处理
-    if (!createJsonFile(jsonFile.c_str()))
-    {
+    if (!createJsonFile(jsonFile.c_str())) {
         Serial.println("JSON 文件创建失败，系统停止!");
-        while (1)
-            ;
-    }
-    else
-    {
+        while (1);
+    } else {
         Serial.println("JSON 文件创建成功!");
     }
 }
+
 // 创建新的JSON数据文件并写入初始数据结构
-bool createJsonFile(String jsonFile)
-{
+bool createJsonFile(String jsonFile) {
     File file = SPIFFS.open(jsonFile, "w"); // 参数 jsonFile: 要创建的文件路径
 
-    if (!file)
-    {
+    if (!file) {
         Serial.println("There was an error creating a new json file");
         return false;
     }
 
-    if (!file.println("{\"Time\":[\"Oil Temperature\",\"Coolant Temperature\",\"Oil Pressure\",\"O2\",\"Voltage\"]}"))
-    {
+    if (!file.println("{\"Time\":[\"Oil Temperature\",\"Coolant Temperature\",\"Oil Pressure\",\"O2\",\"Voltage\"]}")) {
         Serial.println("File append failed");
         return false;
     }
@@ -182,19 +161,17 @@ bool createJsonFile(String jsonFile)
     file.close();
     return true;
 }
+
 // 向现有JSON文件追加实时传感器数据
-bool appendJsonFile(String jsonFile)
-{
+bool appendJsonFile(String jsonFile) {
     size_t totalBytes = SPIFFS.totalBytes();
     size_t usedBytes = SPIFFS.usedBytes();
     // Serial.printf("Total space: %u bytes, Used space: %u bytes\n", totalBytes, usedBytes); // 打印结果
-    if ((totalBytes - usedBytes) < 50)
-    {
+    if ((totalBytes - usedBytes) < 50) {
         // 使用现代文件遍历方法
         File root = SPIFFS.open("/json");
         File file = root.openNextFile();
-        if (file)
-        {
+        if (file) {
             SPIFFS.remove(file.path());
             Serial.println("Removing " + String(file.path()) + ". SPIFFS is too full.");
         }
@@ -202,28 +179,27 @@ bool appendJsonFile(String jsonFile)
     // 以追加模式打开目标文件
     File file = SPIFFS.open(jsonFile, "a");
 
-    if (!file)
-    {
+    if (!file) {
         Serial.println("There was an error opening the file for appending");
         return false;
     }
     // 构建JSON数据条目
     char temp[75];
     String message;
-    sprintf(temp, ",{\"%d\":[\"%d\",\"%d\",\"%.2f\",\"%.2f\",\"%.1f\"]}", millis(), oilTemp, coolantTemp, oilPressure, afr, voltage);
+    sprintf(temp, ",{\"%d\":[\"%d\",\"%d\",\"%.2f\",\"%.2f\",\"%.1f\"]}", millis(), oilTemp, coolantTemp, oilPressure,
+            afr, voltage);
     message += temp;
     // 写入文件并检查结果
-    if (!file.println(message))
-    {
+    if (!file.println(message)) {
         Serial.println("File append failed");
         return false;
     }
     file.close();
     return true;
 }
-void readConfig()
-{
-    byte tmp;     // 临时存储字节数据
+
+void readConfig() {
+    byte tmp; // 临时存储字节数据
     int addr = 2; // 跳过已移除的单位设置，从地址2开始
     // 读取时间格式设置（0-24小时制，1-12小时制）
     EEPROM.get(addr, tmp);
@@ -250,9 +226,9 @@ void readConfig()
     Serial.printf("保存的屏幕模式: %d\n", modeSaved);
     Serial.println("----------------------");
 }
+
 // 将系统配置写入EEPROM持久化存储
-void writeConfig()
-{
+void writeConfig() {
     // 跳过已移除的单位设置（地址0和1），从地址2开始
 
     // 将时间格式设置写入地址2（1字节存储）
@@ -267,28 +243,27 @@ void writeConfig()
     // 提交EEPROM更改（确保数据实际写入闪存）
     EEPROM.commit(); // 必须调用commit才能使更改生效
 }
+
 // 从EEPROM读取16位整型数据 (小端格式)
-int eepromReadInt(int adr)
-{
+int eepromReadInt(int adr) {
     byte low, high; // 存储高低位字节
 
     // 读取小端格式存储的16位整型
-    low = EEPROM.read(adr);      // 读取低位字节（地址adr）
+    low = EEPROM.read(adr); // 读取低位字节（地址adr）
     high = EEPROM.read(adr + 1); // 读取高位字节（地址adr+1）
 
     return low + ((high << 8) & 0xFF00);
 }
 
 // 向EEPROM写入16位整型数据 (小端格式)
-void eepromWriteInt(int adr, int wert)
-{
+void eepromWriteInt(int adr, int wert) {
     byte low, high; // 存储高低位字节
 
-    low = wert & 0xFF;         // 获取低位字节（0x00-0xFF）
+    low = wert & 0xFF; // 获取低位字节（0x00-0xFF）
     high = (wert >> 8) & 0xFF; // 右移8位获取高位字节
 
     // 将分解后的字节写入EEPROM
-    EEPROM.write(adr, low);      // 低位写入地址adr
+    EEPROM.write(adr, low); // 低位写入地址adr
     EEPROM.write(adr + 1, high); // 高位写入地址adr+1
 
     return;

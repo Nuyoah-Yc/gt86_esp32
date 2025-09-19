@@ -11,7 +11,7 @@ DateTime now;
 WiFiUDP ntpUDP;
 NTPClient NTPch(ntpUDP, "pool.ntp.org");
 
-int buttonPin1 = 2;  // 按钮引脚为 2
+int buttonPin1 = 2; // 按钮引脚为 2
 int buttonPin2 = 34; // 按钮引脚为 34
 int buttonPin3 = 35; // 按钮引脚为35
 int buttonPin1Pressed = -1;
@@ -33,8 +33,8 @@ bool clockRefresh = false;
 bool clock24h = true;
 bool pm;
 bool drawDots = false;
-bool pressureBar = false;  // 固定使用bar（公制单位）
-bool temperatureCelsius = false;  // 固定使用摄氏度（false表示摄氏度）
+bool pressureBar = false; // 固定使用bar（公制单位）
+bool temperatureCelsius = false; // 固定使用摄氏度（false表示摄氏度）
 bool readyForModeChange = true;
 bool updateCompleteDisplay = true;
 float afr = 14.6;
