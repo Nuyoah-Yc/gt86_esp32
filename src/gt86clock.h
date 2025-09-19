@@ -22,37 +22,19 @@ extern RTC_DS3231 RTC;
 
 #include "logos.h"
 
-#include <WiFi.h>
-#include <WebServer.h>
-#include <WiFiManager.h>
-extern WebServer server;
-extern WiFiManager wifiManager;
+// WiFi相关库已移除
 
-#include <FS.h>
-#include <SPIFFS.h>
-
-#include <NTPClient.h> // NTP 客户端库
-#include <WiFiUdp.h>   // UDP 依赖库
-
-// 全局声明 NTP 客户端和 DateTime 变量
-extern WiFiUDP ntpUDP;
-extern NTPClient NTPch;
 extern RTC_DS3231 Clock;
 extern DateTime dateTime;
 extern DateTime now;
 
-#define MAXSCREENS 13
+#define MAXSCREENS 6
 #define LOGO 0
 #define CLOCK 1
 #define OILTEMP 2
 #define COOLANTTEMP 3
 #define OILCOOLANTTEMP 4
 #define OILPRESSURE 5
-#define O2 6
-#define SETTINGSWIFI 7
-#define SETTINGSCLOCK 8
-#define SETTINGSUNITS 9
-#define SETTINGSO2 10
 
 extern int buttonPin1;
 extern int buttonPin2;
@@ -67,12 +49,11 @@ extern int modeSaved;
 extern int oilTemp;
 extern int lastModeChange;
 extern int lastTempUpdate;
-extern int lastJsonAppend;
 // extern int eepromReadInt(int adr);
 
 // CAN相关变量已移除
 
-extern bool o2afr;
+// o2afr变量已移除
 extern bool clockRefresh;
 extern bool clock24h;
 extern bool pm;
@@ -82,27 +63,23 @@ extern bool temperatureCelsius;
 extern bool readyForModeChange;
 extern bool updateCompleteDisplay;
 
-extern float afr;
-extern float voltage;
+// afr和voltage变量已移除
 extern float oilPressure;
 extern float oilPressureOld;
 extern float oilPressureOffset;
 extern float oilPressureScalingFactor;
 
-extern WebServer server; // 声明外部全局变量
-
-extern String jsonFile;
+// WebServer相关已移除
 
 // CAN数据缓冲区已移除
 
-extern String jsonFile; // 声明全局变量
+// JSON文件和NTP同步相关已移除
 
 // 添加全局标志位
 extern volatile bool button1PressedFlag;
 extern volatile bool button2PressedFlag;
 extern volatile bool syncRTCFlag;
 extern volatile bool saveConfigFlag;
-extern volatile bool syncNTPFlag;
 
 extern int buttonPin3;
 extern int buttonPin3Pressed;

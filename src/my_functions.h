@@ -3,7 +3,7 @@
 #define MY_FUNCTIONS_H
 #include <Arduino.h>
 
-void syncNTP(); // 添加 NTP 同步函数声明
+// NTP同步函数已移除
 // 中断处理函数
 void handleInterruptPin1();
 
@@ -23,22 +23,7 @@ void handleModeButton();
 
 void handleModeButton3();
 
-// Web服务器处理函数
-void handleSpecificArg();
-
-bool handleJson();
-
-void handleDateJs();
-
-void handleConfigJs();
-
-void handleTemperatureJs();
-
-bool handleFileRead(String path);
-
-bool createJsonFile(String path);
-
-String getContentType(String filename);
+// Web服务器处理函数已移除
 
 extern volatile bool doubleButtonPressedFlag;
 
@@ -69,18 +54,9 @@ void drawCoolantOilTemp(bool updateDisplay);
 
 void drawOilPressure(bool updateDisplay);
 
-void drawAfrAndVoltage(bool updateDisplay);
+// AFR/电压显示和设置界面绘制函数已移除
 
-void drawSettingsWifi(bool updateDisplay);
-
-void drawSettingsClock(bool updateDisplay);
-
-void drawSettingsUnits(bool updateDisplay);
-
-void drawSettingsO2(bool updateDisplay);
-
-// JSON 函数声明
-bool appendJsonFile(String jsonFile);
+// JSON函数已移除
 
 // readConfig() 函数前添加函数声明
 int eepromReadInt(int adr);
@@ -90,4 +66,4 @@ void eepromWriteInt(int adr, int wert);
 // ADC传感器读取函数声明（预留给用户开发）
 void readSensor1(); // 油温传感器读取
 void readSensor2(); // 水温传感器读取
-void readSensor3(); // 空燃比/电压传感器读取
+void readSensor3(); // 预留传感器读取

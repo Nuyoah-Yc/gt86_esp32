@@ -2,39 +2,7 @@
 #include "my_functions.h"
 #include "gt86clock.h"
 
-void drawAfrAndVoltage(bool updateCompleteDisplay) {
-    if (o2afr) {
-        // AFR显示模式
-        // 转换AFR值为字符串（保留1位小数）
-        char afrChar[4];
-        dtostrf(afr, 1, 1, afrChar);
-
-        // 转换电压值为字符串（保留1位小数）
-        char voltageChar[4];
-        dtostrf(voltage, 1, 1, voltageChar);
-
-        // 调用双参数绘制函数（带百分比计算）
-        drawTwoValues(o2Width, o2Height, o2Bits,
-                      afrChar, countDigits(round((afr / 14.7) * 100) / 100), "",
-                      batteryWidth, batteryHeight, batteryBits,
-                      voltageChar, 4, "V", updateCompleteDisplay);
-    } else {
-        // 原始值显示模式
-        // 转换AFR值为字符串（保留2位小数）
-        char afrChar[4];
-        dtostrf(afr, 1, 2, afrChar);
-
-        // 转换电压值为字符串（保留1位小数）
-        char voltageChar[4];
-        dtostrf(voltage, 1, 1, voltageChar);
-
-        // 调用双参数绘制函数（直接显示原始值）
-        drawTwoValues(o2Width, o2Height, o2Bits,
-                      afrChar, countDigits(afr), "",
-                      batteryWidth, batteryHeight, batteryBits,
-                      voltageChar, 4, "V", updateCompleteDisplay);
-    }
-}
+// drawAfrAndVoltage函数已移除
 
 void drawCoolantOilTemp(bool updateCompleteDisplay) {
     // 固定使用摄氏度显示

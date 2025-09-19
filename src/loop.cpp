@@ -13,8 +13,7 @@ void updateSimulatedSensorData() {
         oilTemp = 70 + 20 * sin(t / 10.0); // 油温 70~90
         coolantTemp = 80 + 10 * cos(t / 8.0); // 水温 70~90
         oilPressure = 2.0 + 1.5 * fabs(sin(t / 6.0)); // 油压 2.0~3.5
-        afr = 14.0 + 0.5 * sin(t / 5.0); // 空燃比 13.5~14.5
-        voltage = 12.0 + 0.5 * cos(t / 7.0); // 电压 11.5~12.5
+        // afr和voltage模拟数据已移除
         lastUpdate = millis();
     }
 }
@@ -49,9 +48,7 @@ void loop(void) {
     // 实时时钟更新
     now = RTC.now();
 
-    // 网络服务处理
-    server.handleClient(); // 处理Web客户端请求
-    wifiManager.process(); // WiFi连接维护
+    // 网络服务处理已移除
 
     // RTC时间同步触发（来自设置界面）
     if (syncRTCFlag) {
@@ -69,11 +66,7 @@ void loop(void) {
         Serial.println("[DEBUG] 配置已保存");
     }
 
-    // NTP网络时间同步触发
-    if (syncNTPFlag) {
-        syncNTP(); // 执行NTP同步（需确保非阻塞）
-        syncNTPFlag = false; // 清除同步标志
-    }
+    // NTP网络时间同步已移除
 
     // ADC传感器数据读取（替代CAN总线）
     readSensor1(); // 读取传感器1（油温）
@@ -168,30 +161,12 @@ void loop(void) {
         case OILPRESSURE: // 油压显示界面
             drawOilPressure(updateCompleteDisplay);
             break;
-        case O2: // 空燃比/电压双显界面
-            drawAfrAndVoltage(updateCompleteDisplay);
-            break;
-        case SETTINGSWIFI: // WiFi设置界面
-            drawSettingsWifi(updateCompleteDisplay);
-            break;
-        case SETTINGSCLOCK: // 时钟设置界面
-            drawSettingsClock(updateCompleteDisplay);
-            break;
-        case SETTINGSUNITS: // 单位设置界面
-            drawSettingsUnits(updateCompleteDisplay);
-            break;
-        case SETTINGSO2: // 空燃比显示模式设置界面
-            drawSettingsO2(updateCompleteDisplay);
-            break;
+        // O2、WiFi设置、单位设置、O2设置界面已移除
         default: // 异常情况默认显示LOGO
             drawLogo(updateCompleteDisplay);
     }
 
-    // 每10秒追加一次传感器数据到JSON文件
-    if (millis() - lastJsonAppend > 10000) {
-        appendJsonFile(jsonFile); // 执行数据追加
-        lastJsonAppend = millis(); // 重置计时器
-    }
+    // JSON文件数据追加已移除
 
     readyForModeChange = true; // 允许进行下一次模式切换
     updateSimulatedSensorData(); // 每次循环都更新模拟数据
@@ -202,9 +177,8 @@ void customDelay(int reqDelay) // 参数：reqDelay-需要延时的毫秒数
 {
     unsigned long startTime = millis(); // 记录延时开始时间
 
-    // 非阻塞延时循环（保持Web服务器响应能力）
+    // 非阻塞延时循环（Web服务器处理已移除）
     while (millis() - startTime < reqDelay) {
-        server.handleClient(); // 处理Web客户端请求
         if (modeOld != modeCurrent) // 检测模式切换请求
             break; // 立即退出延时循环
 
@@ -239,15 +213,14 @@ void readSensor2() {
     Serial.println("[DEBUG] readSensor2() - 水温传感器读取（待用户实现）");
 }
 
-// ADC传感器读取方法3 - 空燃比/电压传感器
+// ADC传感器读取方法3 - 预留传感器
 // 预留给用户后续开发，可连接到任意ADC引脚
 void readSensor3() {
-    // TODO: 用户自定义空燃比/电压传感器读取逻辑
+    // TODO: 用户自定义传感器读取逻辑
     // 示例：
     // int adcValue = analogRead(A3); // 假设连接到A3引脚
-    // afr = mapAdcToAfr(adcValue);
-    // voltage = mapAdcToVoltage(adcValue);
+    // 用户可在此处实现自定义传感器读取逻辑
 
     // 调试输出
-    Serial.println("[DEBUG] readSensor3() - 空燃比/电压传感器读取（待用户实现）");
+    Serial.println("[DEBUG] readSensor3() - 预留传感器读取（待用户实现）");
 }

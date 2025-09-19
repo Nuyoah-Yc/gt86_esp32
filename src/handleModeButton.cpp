@@ -6,7 +6,7 @@ extern volatile bool doubleButtonPressedFlag;
 void handleModeButton() {
     // 2号引脚（buttonPin1）短按：切换模式
     if (buttonPin1Pressed != -1 && millis() - buttonPin1Pressed > 20 && millis() - buttonPin1Pressed < 500) {
-        modeCurrent = (modeCurrent % (MAXSCREENS - 3)) + 1; // 模式循环 1-（MAXSCREENS-3）
+        modeCurrent = (modeCurrent % (MAXSCREENS - 1)) + 1; // 模式循环 1-（MAXSCREENS-1）
         saveConfigFlag = true;
         buttonPin1Pressed = -1;
         lastModeChange = millis();
@@ -18,15 +18,9 @@ void handleModeButton() {
         Serial.println(modeCurrent);
         if (modeCurrent == CLOCK) {
             syncRTCFlag = true;
-            Serial.println("[DEBUG] 触发NTP时间同步");
-        } else if (modeCurrent == O2) {
-            o2afr = !o2afr;
-            modeOld = 0;
-            saveConfigFlag = true;
-            Serial.print("[DEBUG] 切换空燃比显示模式，当前o2afr: ");
-            Serial.println(o2afr ? "AFR" : "Lambda");
+            Serial.println("[DEBUG] 触发时钟同步");
         } else {
-            Serial.println("[DEBUG] 长按无功能（单位已固定为公制）");
+            Serial.println("[DEBUG] 长按无功能");
         }
         buttonPin1Pressed = -1;
         lastModeChange = millis();
