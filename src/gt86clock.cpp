@@ -1,7 +1,7 @@
 #include "gt86clock.h"
 
 U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2(U8G2_R0, /* reset=*/U8X8_PIN_NONE, /* clock=*/22, /* data=*/21);
-MCP_CAN CAN0(5);
+// MCP_CAN CAN0(5); // CAN模块已移除
 WebServer server(80);
 WiFiManager wifiManager;
 RTC_DS3231 RTC;
@@ -27,7 +27,7 @@ int oilTemp = 0;
 int lastModeChange = 0;
 int lastTempUpdate = 0;
 int lastJsonAppend = 0;
-long unsigned int rxId;
+// long unsigned int rxId; // CAN相关变量已移除
 bool o2afr = true;
 bool clockRefresh = false;
 bool clock24h = true;
@@ -44,8 +44,8 @@ float oilPressureOld;
 float oilPressureOffset = 114;
 float oilPressureScalingFactor = 0.172018348623853;
 String jsonFile;
-unsigned char len = 0;
-unsigned char buf[12];
+// unsigned char len = 0; // CAN数据缓冲区已移除
+// unsigned char buf[12]; // CAN数据缓冲区已移除
 
 // 定义全局变量（分配内存）
 volatile bool button1PressedFlag = false;

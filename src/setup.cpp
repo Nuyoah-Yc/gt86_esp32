@@ -38,28 +38,8 @@ void setup(void) {
 
     Serial.println("EEPROM ok");
 
-    if (CAN0.begin(MCP_STDEXT, CAN_500KBPS, MCP_8MHZ) == CAN_OK) {
-        Serial.println("Can1 MCP2515 Initialized Successfully!");
-        customDelay(500);
-    } else {
-        Serial.println("Error Initializing MCP2515...");
-        customDelay(4000);
-    }
-
-    Serial.println("CAN ok");
-
-    // Can Hardware Filter
-    CAN0.init_Mask(0, 0, 0x0FF0000);
-    CAN0.init_Filt(0, 0, 0x07DF0000);
-    CAN0.init_Filt(1, 0, 0x07DF0000);
-
-    CAN0.init_Mask(1, 0, 0x07FF0000);
-    CAN0.init_Filt(2, 0, 0x07E80000); // OBD
-    CAN0.init_Filt(3, 0, 0x03600000); // Water / Oil
-    CAN0.init_Filt(4, 0, 0x01340000); // AFR
-    CAN0.init_Filt(5, 0, 0x01420000); // Voltage
-
-    CAN0.setMode(MCP_NORMAL);
+    // MCP2515 CAN模块初始化已移除，改用ADC传感器
+    Serial.println("CAN模块已移除，使用ADC传感器输入");
 
     // --------------------- WiFi 连接优化 ---------------------
     WiFi.setHostname("gt86clock");

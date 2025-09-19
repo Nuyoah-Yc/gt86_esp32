@@ -86,3 +86,8 @@ bool appendJsonFile(String jsonFile);
 int eepromReadInt(int adr);
 
 void eepromWriteInt(int adr, int wert);
+
+// ADC传感器读取函数声明（预留给用户开发）
+void readSensor1(); // 油温传感器读取
+void readSensor2(); // 水温传感器读取
+void readSensor3(); // 空燃比/电压传感器读取

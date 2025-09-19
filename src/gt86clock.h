@@ -9,10 +9,7 @@
 #endif
 extern U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2;
 
-#include <mcp_can.h>
-#include <SPI.h>
-#define CAN0_INT 4 // ESP32: CAN INT引脚
-extern MCP_CAN CAN0;
+// MCP2515 CAN模块已移除，改用ADC传感器输入
 
 #include <EEPROM.h>
 // #include "DS3231.h"   // 不使用这个库
@@ -73,7 +70,7 @@ extern int lastTempUpdate;
 extern int lastJsonAppend;
 // extern int eepromReadInt(int adr);
 
-extern long unsigned int rxId;
+// CAN相关变量已移除
 
 extern bool o2afr;
 extern bool clockRefresh;
@@ -96,8 +93,7 @@ extern WebServer server; // 声明外部全局变量
 
 extern String jsonFile;
 
-extern unsigned char len;
-extern unsigned char buf[12];
+// CAN数据缓冲区已移除
 
 extern String jsonFile; // 声明全局变量
 

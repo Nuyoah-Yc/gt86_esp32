@@ -75,90 +75,10 @@ void loop(void) {
         syncNTPFlag = false; // 清除同步标志
     }
 
-    // CAN总线数据处理（来自汽车ECU）
-    if (CAN_MSGAVAIL == CAN0.checkReceive()) {
-        Serial.println("[DEBUG] CAN数据可用");
-        CAN0.readMsgBuf(&rxId, &len, buf); // 读取CAN数据
-
-        // 0x360报文：油温/水温数据
-        if (rxId == 0x360) {
-            // 油温处理（原始值-40得到实际温度，固定摄氏度）
-            if (buf[2] > 0 && buf[2] < 200) {
-                oilTemp = buf[2] - 40;
-                lastTempUpdate = millis(); // 记录最后更新时间
-            }
-
-            // 水温处理（固定摄氏度）
-            if (buf[3] > 0 && buf[3] < 200) {
-                coolantTemp = buf[3] - 40;
-                lastTempUpdate = millis();
-            }
-        }
-        // 0x134报文：空燃比数据
-        else if (rxId == 0x134) {
-            Serial.print("ID: ");
-            Serial.print(rxId, HEX);
-            Serial.print("  Data: ");
-            for (int i = 0; i < len; i++) {
-                if (buf[i] < 0x10)
-                    Serial.print("0");
-                Serial.print(buf[i], HEX);
-                Serial.print(" ");
-            }
-
-            // 空燃比模式处理
-            if (o2afr) // AFR模式
-            {
-                if (afr < -40 || afr > 320) // 合理性检查
-                    afr = 999;
-            } else // O2模式
-            {
-                // 转换为lambda值（14.7为基准）
-                afr = float(round((afr / 14.7) * 100)) / 100;
-                if (afr < -0.2 || afr > 2) // 范围检查
-                    afr = -1;
-            }
-        }
-        // 0x142报文：电压数据
-        else if (rxId == 0x142) // 电压报文处理
-        {
-            // 原始数据打印（调试用）
-            Serial.print("ID: ");
-            Serial.print(rxId, HEX);
-            Serial.print("  Data: ");
-            // 遍历数据字节（十六进制格式输出）
-            for (int i = 0; i < len; i++) {
-                // 单字节补零（保持两位十六进制显示）
-                if (buf[i] < 0x10) {
-                    Serial.print("0");
-                }
-                Serial.print(buf[i], HEX);
-                Serial.print(" ");
-            }
-            Serial.println();
-
-            // 关键字节调试输出
-            Serial.print("buf[3]: "); // 电压高字节
-            Serial.print(buf[3]);
-            Serial.print(" buf[4]: "); // 电压低字节
-            Serial.println(buf[4]);
-
-            // 电压计算公式：（高字节 * 256 + 低字节）/ 1000
-            voltage = (buf[3] * 256 + buf[4]) / 1000;
-            Serial.print("Voltage: ");
-            Serial.println(voltage);
-
-            // 精度处理（保留1位小数）
-            voltage = float(round(voltage * 10)) / 10;
-
-            // 合理性检查（5-16V有效范围）
-            if (voltage < 5 || voltage > 16)
-                voltage = 0; // 异常值清零
-        }
-
-        // 在耗时操作后再次喂狗
-        esp_task_wdt_reset();
-    }
+    // ADC传感器数据读取（替代CAN总线）
+    readSensor1(); // 读取传感器1（油温）
+    readSensor2(); // 读取传感器2（水温）
+    readSensor3(); // 读取传感器3（油压）
 
     // // 模拟数据方案（示例）：
     // oilPressureOld = 500; // 固定模拟值（范围根据传感器校准值调整）
@@ -291,4 +211,43 @@ void customDelay(int reqDelay) // 参数：reqDelay-需要延时的毫秒数
         esp_task_wdt_reset(); // 喂狗（维护看门狗）
         delay(50);
     }
+}
+
+// ADC传感器读取方法1 - 油温传感器
+// 预留给用户后续开发，可连接到任意ADC引脚
+void readSensor1() {
+    // TODO: 用户自定义油温传感器读取逻辑
+    // 示例：
+    // int adcValue = analogRead(A1); // 假设连接到A1引脚
+    // oilTemp = mapAdcToTemperature(adcValue);
+    // lastTempUpdate = millis();
+
+    // 调试输出
+    Serial.println("[DEBUG] readSensor1() - 油温传感器读取（待用户实现）");
+}
+
+// ADC传感器读取方法2 - 水温传感器
+// 预留给用户后续开发，可连接到任意ADC引脚
+void readSensor2() {
+    // TODO: 用户自定义水温传感器读取逻辑
+    // 示例：
+    // int adcValue = analogRead(A2); // 假设连接到A2引脚
+    // coolantTemp = mapAdcToTemperature(adcValue);
+    // lastTempUpdate = millis();
+
+    // 调试输出
+    Serial.println("[DEBUG] readSensor2() - 水温传感器读取（待用户实现）");
+}
+
+// ADC传感器读取方法3 - 空燃比/电压传感器
+// 预留给用户后续开发，可连接到任意ADC引脚
+void readSensor3() {
+    // TODO: 用户自定义空燃比/电压传感器读取逻辑
+    // 示例：
+    // int adcValue = analogRead(A3); // 假设连接到A3引脚
+    // afr = mapAdcToAfr(adcValue);
+    // voltage = mapAdcToVoltage(adcValue);
+
+    // 调试输出
+    Serial.println("[DEBUG] readSensor3() - 空燃比/电压传感器读取（待用户实现）");
 }
