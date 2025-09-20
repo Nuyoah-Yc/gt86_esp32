@@ -3,12 +3,9 @@
 #include "esp_task_wdt.h"
 
 void setup(void) {
-    // 初始化看门狗定时器
     esp_task_wdt_init(60, true);
     esp_task_wdt_add(NULL);
-    Serial.println("看门狗初始化完成");
-    u8g2.begin(); // Oled display begins
-    Serial.println("OLED初始化完成");
+    u8g2.begin();
     u8g2.setFlipMode(1);
 
     Wire.begin();
@@ -18,9 +15,9 @@ void setup(void) {
     Serial.println("Serial OK");
 
     pinMode(A0, INPUT); // oil pressure
-    pinMode(buttonPin1, INPUT_PULLUP); // muxed for the 3 buttons
-    pinMode(buttonPin2, INPUT_PULLUP); // muxed for the 3 buttons
-    pinMode(buttonPin3, INPUT_PULLUP); // 新增第三个按钮
+    pinMode(buttonPin1, INPUT_PULLUP);
+    pinMode(buttonPin2, INPUT_PULLUP);
+    pinMode(buttonPin3, INPUT_PULLUP);
 
     Serial.println("PINS1 ok");
 
@@ -36,12 +33,6 @@ void setup(void) {
     readConfig();
 
     Serial.println("EEPROM ok");
-
-    // MCP2515 CAN模块初始化已移除，改用ADC传感器
-    Serial.println("CAN模块已移除，使用ADC传感器输入");
-
-    // WiFi和Web服务器初始化已移除
-    Serial.println("WiFi和Web服务器功能已移除");
 
     // 显式初始化 RTC
     if (!RTC.begin()) {
@@ -118,6 +109,4 @@ void eepromWriteInt(int adr, int wert) {
     // 将分解后的字节写入EEPROM
     EEPROM.write(adr, low); // 低位写入地址adr
     EEPROM.write(adr + 1, high); // 高位写入地址adr+1
-
-    return;
 }
