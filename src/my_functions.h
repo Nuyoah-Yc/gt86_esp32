@@ -1,9 +1,7 @@
-// 调用其他的void()函数
-#ifndef MY_FUNCTIONS_H // 防止重复包含
+#ifndef MY_FUNCTIONS_H
 #define MY_FUNCTIONS_H
 #include <Arduino.h>
 
-// NTP同步函数已移除
 // 中断处理函数
 void handleInterruptPin1();
 
@@ -11,19 +9,13 @@ void handleInterruptPin2();
 
 void handleInterruptPin3();
 
-// 配置和工具函数
-void readConfig();
-
+// 工具函数
 void customDelay(int ms);
-
-void writeConfig();
 
 // 添加模式按钮处理函数声明
 void handleModeButton();
 
 void handleModeButton3();
-
-// Web服务器处理函数已移除
 
 extern volatile bool doubleButtonPressedFlag;
 
@@ -53,15 +45,6 @@ void drawCoolantTemp(bool updateDisplay);
 void drawCoolantOilTemp(bool updateDisplay);
 
 void drawOilPressure(bool updateDisplay);
-
-// AFR/电压显示和设置界面绘制函数已移除
-
-// JSON函数已移除
-
-// readConfig() 函数前添加函数声明
-int eepromReadInt(int adr);
-
-void eepromWriteInt(int adr, int wert);
 
 // ADC传感器读取函数声明（预留给用户开发）
 void readSensor1(); // 油温传感器读取

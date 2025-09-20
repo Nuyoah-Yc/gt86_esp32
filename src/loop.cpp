@@ -3,29 +3,13 @@
 #include "my_functions.h"
 #include "esp_task_wdt.h"
 
-// 模拟数据生成函数 测试
-void updateSimulatedSensorData() {
-    static unsigned long lastUpdate = 0;
-    static float t = 0;
-    if (millis() - lastUpdate > 500) {
-        // 每0.5秒更新一次
-        t += 0.5;
-        oilTemp = 70 + 20 * sin(t / 10.0); // 油温 70~90
-        coolantTemp = 80 + 10 * cos(t / 8.0); // 水温 70~90
-        oilPressure = 2.0 + 1.5 * fabs(sin(t / 6.0)); // 油压 2.0~3.5
-        // afr和voltage模拟数据已移除
-        lastUpdate = millis();
-    }
-}
-
-void loop(void) {
+void loop() {
     esp_task_wdt_reset();
 
     // --- 按钮1：切换显示模式 ---
     if (button1PressedFlag) {
         button1PressedFlag = false;
-        modeCurrent = (modeCurrent % (MAXSCREENS - 1)) + 1; // 循环 1~5
-        saveConfigFlag = true; // 保存模式到EEPROM
+        modeCurrent = (modeCurrent % (MAXSCREENS - 1)) + 1;
         clockRefresh = true;
         Serial.printf("[DEBUG] 切换模式 -> %d\n", modeCurrent);
     }
@@ -35,7 +19,7 @@ void loop(void) {
         button2PressedFlag = false;
         if (modeCurrent == CLOCK) {
             clockHour = (clockHour + 1) % 24;
-            DateTime nowTime = RTC.now();
+            const DateTime nowTime = RTC.now();
             RTC.adjust(DateTime(nowTime.year(), nowTime.month(), nowTime.day(),
                                 clockHour, clockMinute, 0));
             clockRefresh = true;
@@ -48,7 +32,7 @@ void loop(void) {
         button3PressedFlag = false;
         if (modeCurrent == CLOCK) {
             clockMinute = (clockMinute + 1) % 60;
-            DateTime nowTime = RTC.now();
+            const DateTime nowTime = RTC.now();
             RTC.adjust(DateTime(nowTime.year(), nowTime.month(), nowTime.day(),
                                 clockHour, clockMinute, 0));
             clockRefresh = true;
@@ -90,23 +74,19 @@ void loop(void) {
     }
 }
 
-
-// 自定义非阻塞延时函数，用于模式切换时的延迟
-void customDelay(int reqDelay) // 参数：reqDelay-需要延时的毫秒数
+void customDelay(int reqDelay)
 {
-    unsigned long startTime = millis(); // 记录延时开始时间
+    unsigned long startTime = millis();
 
-    // 非阻塞延时循环（Web服务器处理已移除）
     while (millis() - startTime < reqDelay) {
-        if (modeOld != modeCurrent) // 检测模式切换请求
-            break; // 立即退出延时循环
+        if (modeOld != modeCurrent)
+            break;
 
-        esp_task_wdt_reset(); // 喂狗（维护看门狗）
+        esp_task_wdt_reset();
         delay(50);
     }
 }
 
-// 0.5s 更新一次模拟数据
 void readSensor1() { // 油温
     static unsigned long lastUpdate = 0;
     static float t = 0;

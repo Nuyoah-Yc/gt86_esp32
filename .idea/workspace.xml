@@ -23,15 +23,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dba680f-0f2b-4502-840c-2dcb503a0817" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/.sconsign313.dblite" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/.sconsign313.dblite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/FrameworkArduino/firmware_msc_fat.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/FrameworkArduino/firmware_msc_fat.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.elf" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.elf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.map" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/lib213/EEPROM/EEPROM.cpp.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/lib213/EEPROM/EEPROM.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/lib213/libEEPROM.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/libFrameworkArduino.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/libFrameworkArduino.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/drawClock.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/drawClock.cpp.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/drawClock.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/drawClock.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/gt86clock.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/gt86clock.cpp.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/gt86clock.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/gt86clock.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/handleModeButton.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/handleModeButton.cpp.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/handleModeButton.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/handleModeButton.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/interrupts.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/interrupts.cpp.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/interrupts.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/interrupts.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/loop.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/loop.cpp.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/loop.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/loop.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/screen.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/screen.cpp.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/screen.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/screen.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/tmp_3z76qo6.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/tmpdwsl_i7h.tmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/css/gt86clock.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/js/Chart.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/js/gt86clock.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/default_spiffs.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/platformio.ini" beforeDir="false" afterPath="$PROJECT_DIR$/platformio.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/drawSettings.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/drawClock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/drawClock.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gt86clock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/gt86clock.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gt86clock.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/gt86clock.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/handleModeButton.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/handleModeButton.cpp" afterDir="false" />
@@ -39,7 +58,6 @@
       <change beforePath="$PROJECT_DIR$/src/my_functions.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/my_functions.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screen.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/screen.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/setup.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webserver.cpp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +75,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/gt86clock.h" root0="FORCE_HIGHLIGHTING" />
@@ -96,45 +115,45 @@
     <option name="minorVersion" value="2.1" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="32rnQOOdXgupn9tITSpwT2UTvHW" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "PlatformIO.PlatformIO.executor": "Run",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "ssh.settings",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;PlatformIO.PlatformIO.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ssh.settings&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="gt86esp32" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">

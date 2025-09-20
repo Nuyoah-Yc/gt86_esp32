@@ -1,6 +1,7 @@
 // 显示屏逻辑处理
 #include "my_functions.h"
 #include "gt86clock.h"
+#include "logos.h"
 
 // drawAfrAndVoltage函数已移除
 

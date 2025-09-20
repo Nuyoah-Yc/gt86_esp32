@@ -7,7 +7,7 @@ void handleModeButton() {
     // 2号引脚（buttonPin1）短按：切换模式
     if (buttonPin1Pressed != -1 && millis() - buttonPin1Pressed > 20 && millis() - buttonPin1Pressed < 500) {
         modeCurrent = (modeCurrent % (MAXSCREENS - 1)) + 1; // 模式循环 1-（MAXSCREENS-1）
-        saveConfigFlag = true;
+        // EEPROM保存已移除
         buttonPin1Pressed = -1;
         lastModeChange = millis();
         return;

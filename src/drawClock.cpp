@@ -1,6 +1,7 @@
 // 时钟界面绘制代码
 #include "gt86clock.h"
 #include "my_functions.h"
+#include "logos.h"
 // 参数 updateCompleteDisplay: 是否需要全屏刷新（模式切换时需置为true）
 void drawClock(bool updateCompleteDisplay) {
     if (updateCompleteDisplay == true) // 需要全屏刷新时
