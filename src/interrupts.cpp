@@ -9,7 +9,7 @@ extern volatile bool doubleButtonPressedFlag;
 void IRAM_ATTR handleInterruptPin1() {
     static unsigned long last_interrupt_time = 0;
     unsigned long interrupt_time = millis();
-    if (interrupt_time - last_interrupt_time > 50) {
+    if (interrupt_time - last_interrupt_time > 300) {
         button1PressedFlag = true;
     }
     last_interrupt_time = interrupt_time;
@@ -18,7 +18,7 @@ void IRAM_ATTR handleInterruptPin1() {
 void IRAM_ATTR handleInterruptPin2() {
     static unsigned long last_interrupt_time = 0;
     unsigned long interrupt_time = millis();
-    if (interrupt_time - last_interrupt_time > 50) {
+    if (interrupt_time - last_interrupt_time > 300) {
         button2PressedFlag = true;
     }
     last_interrupt_time = interrupt_time;
@@ -28,7 +28,7 @@ void IRAM_ATTR handleInterruptPin2() {
 void IRAM_ATTR handleInterruptPin3() {
     static unsigned long last_interrupt_time = 0;
     unsigned long interrupt_time = millis();
-    if (interrupt_time - last_interrupt_time > 50) {
+    if (interrupt_time - last_interrupt_time > 300) {
         button3PressedFlag = true;
     }
     last_interrupt_time = interrupt_time;

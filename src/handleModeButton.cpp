@@ -5,7 +5,7 @@ extern volatile bool doubleButtonPressedFlag;
 // 功能：处理短按/长按操作，实现时间调整/单位切换/模式循环等功能
 void handleModeButton() {
     // 2号引脚（buttonPin1）短按：切换模式
-    if (buttonPin1Pressed != -1 && millis() - buttonPin1Pressed > 20 && millis() - buttonPin1Pressed < 500) {
+    if (buttonPin1Pressed != -1 && millis() - buttonPin1Pressed > 200 && millis() - buttonPin1Pressed < 500) {
         modeCurrent = (modeCurrent % (MAXSCREENS - 1)) + 1; // 模式循环 1-（MAXSCREENS-1）
         // EEPROM保存已移除
         buttonPin1Pressed = -1;
@@ -32,7 +32,7 @@ void handleModeButton() {
 // 35号引脚（buttonPin3）短按：调整分钟（仅时钟模式）
 void handleModeButton3() {
     // 34号按钮调小时
-    if (buttonPin2Pressed != -1 && millis() - buttonPin2Pressed > 20 && millis() - buttonPin2Pressed < 500 &&
+    if (buttonPin2Pressed != -1 && millis() - buttonPin2Pressed > 200 && millis() - buttonPin2Pressed < 500 &&
         modeCurrent == CLOCK && !clockRefresh) {
         clockHour = (clockHour + 1) % 24;
         DateTime nowTime = RTC.now();
@@ -43,7 +43,7 @@ void handleModeButton3() {
         return;
     }
     // 35号按钮调分钟
-    if (buttonPin3Pressed != -1 && millis() - buttonPin3Pressed > 20 && millis() - buttonPin3Pressed < 500 &&
+    if (buttonPin3Pressed != -1 && millis() - buttonPin3Pressed > 200 && millis() - buttonPin3Pressed < 500 &&
         modeCurrent == CLOCK && !clockRefresh) {
         clockMinute = (clockMinute + 1) % 60;
         DateTime nowTime = RTC.now();
