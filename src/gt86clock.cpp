@@ -42,3 +42,6 @@ volatile bool syncRTCFlag = false;
 // 双键标志定义
 volatile bool doubleButtonPressedFlag = false;
 volatile bool button3PressedFlag = false;
+
+// 传感器变量初始化
+int turboPressure = 0;

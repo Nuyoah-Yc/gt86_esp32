@@ -87,37 +87,7 @@ void customDelay(int reqDelay)
     }
 }
 
-void readSensor1() { // 油温
-    static unsigned long lastUpdate = 0;
-    static float t = 0;
-    if (millis() - lastUpdate >= 500) {
-        t += 0.5;
-        oilTemp = 70 + 20 * sin(t / 10.0); // 70~90℃ 波动
-        lastTempUpdate = millis();
-        lastUpdate = millis();
-    }
-}
-
-void readSensor2() { // 水温
-    static unsigned long lastUpdate = 0;
-    static float t = 0;
-    if (millis() - lastUpdate >= 500) {
-        t += 0.5;
-        coolantTemp = 80 + 10 * cos(t / 8.0); // 70~90℃ 波动
-        lastTempUpdate = millis();
-        lastUpdate = millis();
-    }
-}
-
-void readSensor3() { // 油压
-    static unsigned long lastUpdate = 0;
-    static float t = 0;
-    if (millis() - lastUpdate >= 500) {
-        t += 0.5;
-        oilPressure = 2.0 + 1.5 * fabs(sin(t / 6.0)); // 2.0~3.5 bar
-        // 保留1位小数
-        oilPressure = float(round(oilPressure * 10)) / 10;
-        if (oilPressure >= 10) oilPressure = 9.9;
-        lastUpdate = millis();
-    }
-}
+// ============================================
+// 注意：传感器读取函数 readSensor1/2/3 的实现
+// 已移至 sensors.cpp 文件中，使用真实的ADC采样
+// ============================================
