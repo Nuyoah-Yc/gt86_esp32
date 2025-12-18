@@ -22,7 +22,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dba680f-0f2b-4502-840c-2dcb503a0817" name="更改" comment="">
+    <list default="true" id="6dba680f-0f2b-4502-840c-2dcb503a0817" name="更改" comment="修改为使用MCP2515采集数据">
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/.sconsign313.dblite" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/.sconsign313.dblite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/FrameworkArduino/firmware_msc_fat.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/FrameworkArduino/firmware_msc_fat.c.o" afterDir="false" />
@@ -49,15 +51,8 @@
       <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/tmp_3z76qo6.tmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/tmpdwsl_i7h.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/drawClock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/drawClock.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gt86clock.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/gt86clock.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gt86clock.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/gt86clock.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handleModeButton.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/handleModeButton.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loop.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/loop.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/my_functions.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/my_functions.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screen.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/screen.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/build/project.checksum" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/project.checksum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pio/libdeps/esp32dev/integrity.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/libdeps/esp32dev/integrity.dat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +76,13 @@
     <setting file="file://$PROJECT_DIR$/src/gt86clock.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/logos.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/my_functions.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/XM/gt86esp32/src/my_functions.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/XM/gt86esp32/src/screen.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/XM/gt86esp32/src/setup.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cpp" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="Y8oRoGj8" />
   </component>
   <component name="PlatformioLocalSettings">
     <option name="availableProjects">
@@ -120,41 +122,56 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="32rnQOOdXgupn9tITSpwT2UTvHW" />
+  <component name="ProjectStatusUIService">{
+  &quot;uiKindId&quot;: &quot;Widget&quot;
+}</component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;PlatformIO.PlatformIO.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ssh.settings&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "PlatformIO.PlatformIO.executor": "Run",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "D:/XM/gt86esp32",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "ssh.settings",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\XM\gt86esp32" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="gt86esp32" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
+      <method v="2" />
     </configuration>
     <configuration name="PlatformIO" type="platformio" factoryName="PlatformIO Debug" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="gt86esp32" TARGET_NAME="PlatformIO" CONFIG_NAME="PlatformIO">
       <method v="2" />
@@ -168,7 +185,29 @@
       <option name="presentableId" value="Default" />
       <updated>1758187541955</updated>
       <workItem from="1758187544140" duration="9117000" />
+      <workItem from="1765788494083" duration="1368000" />
+      <workItem from="1766026856095" duration="207000" />
+      <workItem from="1766027708957" duration="119000" />
+      <workItem from="1766027849159" duration="197000" />
+      <workItem from="1766029015346" duration="2524000" />
     </task>
+    <task id="LOCAL-00001" summary="添加传感器接入代码逻辑">
+      <option name="closed" value="true" />
+      <created>1761535873362</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761535873362</updated>
+    </task>
+    <task id="LOCAL-00002" summary="修改为使用MCP2515采集数据">
+      <option name="closed" value="true" />
+      <created>1766040856093</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1766040856093</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,5 +223,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加传感器接入代码逻辑" />
+    <MESSAGE value="修改为使用MCP2515采集数据" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改为使用MCP2515采集数据" />
   </component>
 </project>
