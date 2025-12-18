@@ -49,10 +49,8 @@ void loop() {
         clockRefresh = true;
     }
 
-    // --- 调用传感器更新 ---
-    readSensor1();
-    readSensor2();
-    readSensor3();
+    // --- 读取 CAN 总线数据 ---
+    readCANData();
 
     // --- 显示刷新逻辑 ---
     if (modeOld != modeCurrent || clockRefresh) {
@@ -88,6 +86,6 @@ void customDelay(int reqDelay)
 }
 
 // ============================================
-// 注意：传感器读取函数 readSensor1/2/3 的实现
-// 已移至 sensors.cpp 文件中，使用真实的ADC采样
+// 注意：数据读取已切换为 MCP2515 CAN 总线方案
+// readCANData() 函数实现位于 sensors.cpp 中
 // ============================================

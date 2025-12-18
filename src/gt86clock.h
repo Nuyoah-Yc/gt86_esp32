@@ -11,6 +11,9 @@ extern U8G2_SSD1306_128X32_UNIVISION_F_HW_I2C u8g2;
 
 #include <base64.h>
 #include <RTClib.h>
+#include <mcp_can.h>
+#include <SPI.h>
+
 extern RTC_DS3231 RTC;
 
 
@@ -64,42 +67,35 @@ extern int buttonPin3Pressed;
 extern volatile bool button3PressedFlag;
 
 // ============================================
-// 传感器引脚定义
+// MCP2515 CAN 总线引脚定义
 // ============================================
-#define OIL_PRESSURE_PIN    33  // GPIO33 (ADC1_CH5) - 油压传感器
-#define OIL_TEMP_PIN        34  // GPIO34 (ADC1_CH6) - 油温传感器
-#define TURBO_PRESSURE_PIN  32  // GPIO32 (ADC1_CH4) - 涡轮压力传感器
-#define COOLANT_TEMP_PIN    35  // GPIO35 (ADC1_CH7) - 水温传感器
+#define CAN0_CS     15      // GPIO15 - MCP2515 片选引脚 (CS)
+#define CAN0_INT    4       // GPIO4  - MCP2515 中断引脚 (INT)
+// SPI引脚使用ESP32 HSPI默认引脚:
+// MOSI: GPIO13 -> MCP2515 SI
+// MISO: GPIO12 -> MCP2515 SO
+// SCK:  GPIO14 -> MCP2515 SCK
 
 // ============================================
-// ADC 采样参数
+// CAN 总线参数
 // ============================================
-#define ADC_RESOLUTION      12          // 12位ADC (0-4095)
-#define ADC_MAX_VALUE       4095.0      // ADC最大值
-#define ADC_VREF            3.3         // ESP32参考电压 3.3V
-#define ADC_SAMPLES         10          // 滤波采样次数
+#define CAN_SPEED       CAN_500KBPS     // OBD2 标准速率 500Kbps
+#define CAN_CLOCK       MCP_8MHZ        // MCP2515 晶振频率 8MHz
+
+// GT86/BRZ/FRS CAN ID 定义
+#define CAN_ID_TEMP     0x360           // 机油温度 / 冷却液温度
+#define CAN_ID_AFR      0x134           // 空燃比 (AFR)
+#define CAN_ID_VOLTAGE  0x142           // 电压
 
 // ============================================
-// NTC温度传感器校准参数 (油温/水温)
+// CAN 数据全局变量
 // ============================================
-#define NTC_PULLUP_R        470.0       // 上拉电阻 470Ω
-#define NTC_R_AT_20C        673.0       // 20℃时阻值 673Ω
-#define NTC_R_AT_120C       24.0        // 120℃时阻值 24Ω
-#define NTC_BETA            3380.0      // β值 (根据实际传感器调整)
-#define NTC_T0_KELVIN       293.15      // 参考温度 20℃ = 293.15K
+extern MCP_CAN CAN0;                    // CAN 总线对象
+extern long unsigned int canRxId;       // 接收到的 CAN ID
+extern unsigned char canLen;            // CAN 数据长度
+extern unsigned char canBuf[8];         // CAN 数据缓冲区
 
-// ============================================
-// 油压传感器校准参数
-// ============================================
-#define OIL_PRESSURE_PULLUP_R   180.0   // 上拉电阻 180Ω
-#define OIL_PRESSURE_R_MIN      10.0    // 0 bar时阻值 10Ω
-#define OIL_PRESSURE_R_MAX      184.0   // 10 bar时阻值 184Ω
-#define OIL_PRESSURE_MIN        0.0     // 最小压力值 bar
-#define OIL_PRESSURE_MAX        10.0    // 最大压力值 bar
-
-// ============================================
-// 传感器全局变量
-// ============================================
-extern int turboPressure;               // 涡轮压力值
+extern float afr;                       // 空燃比
+extern float voltage;                   // 电压值
 
 #endif

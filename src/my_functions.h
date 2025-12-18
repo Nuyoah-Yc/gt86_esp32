@@ -47,19 +47,21 @@ void drawCoolantOilTemp(bool updateDisplay);
 void drawOilPressure(bool updateDisplay);
 
 // ============================================
-// 传感器读取函数声明
+// MCP2515 CAN 总线函数声明
 // ============================================
-void readSensor1();         // 油温传感器读取 (NTC, GPIO34)
-void readSensor2();         // 水温传感器读取 (NTC, GPIO35)
-void readSensor3();         // 油压传感器读取 (电阻式, GPIO33)
-void readTurboPressure();   // 涡轮压力传感器读取 (GPIO32)
+bool setupCAN();            // CAN 总线初始化
+void setupCANFilters();     // 配置 CAN 过滤器
+void disableCANFilters();   // 禁用过滤器 (调试用)
+void readCANData();         // 读取 CAN 数据 (主循环调用)
+void processCANMessage();   // 处理 CAN 消息
+void printCANMessage();     // 打印 CAN 消息 (调试用)
 
-// ============================================
-// 传感器处理辅助函数声明
-// ============================================
-int readADC_Filtered(int pin, int samples);          // ADC读取+滤波
-float adcToVoltage(int adcValue);                     // ADC转电压
-float voltageToNTC_Resistance(float voltage, float pullupR);  // 电压转NTC阻值
-int ntcResistanceToTemperature(float resistance);     // NTC阻值转温度
-float voltageToOilPressure_Resistance(float voltage); // 电压转油压阻值
-float oilPressureResistanceToPressure(float resistance); // 阻值转油压
+// CAN 数据解析函数
+void parseTemperature();    // 解析温度数据 (0x360)
+void parseAFR();            // 解析空燃比数据 (0x134)
+void parseVoltage();        // 解析电压数据 (0x142)
+
+// 兼容旧接口的传感器读取函数 (保留但为空实现)
+void readSensor1();
+void readSensor2();
+void readSensor3();
