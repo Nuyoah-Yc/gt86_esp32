@@ -7,6 +7,13 @@
 #include <Arduino.h>
 
 // ============================================
+// ESP32 HSPI 引脚定义
+// ============================================
+#define HSPI_MOSI   13
+#define HSPI_MISO   12
+#define HSPI_SCK    14
+
+// ============================================
 // CAN 总线全局变量定义
 // ============================================
 MCP_CAN CAN0(CAN0_CS);              // CAN 总线对象，使用 CS 引脚初始化
@@ -16,6 +23,8 @@ unsigned char canBuf[8] = {0};       // CAN 数据缓冲区
 
 float afr = 14.7;                    // 空燃比 (默认理论空燃比)
 float voltage = 12.0;                // 电压值
+
+bool canInitialized = false;         // CAN 初始化状态标志
 
 // ============================================
 // CAN 过滤器配置
@@ -63,6 +72,17 @@ void disableCANFilters() {
 bool setupCAN() {
     Serial.println("正在初始化 MCP2515...");
 
+    // 重新配置默认 SPI 使用 HSPI 引脚
+    // MCP_CAN 库使用全局 SPI 对象，需要在 begin 前配置
+    SPI.end();  // 先关闭默认 SPI
+    SPI.begin(HSPI_SCK, HSPI_MISO, HSPI_MOSI, CAN0_CS);  // 使用 HSPI 引脚
+
+    pinMode(CAN0_CS, OUTPUT);
+    digitalWrite(CAN0_CS, HIGH);
+
+    Serial.printf("SPI 引脚: SCK=%d, MISO=%d, MOSI=%d, CS=%d\n",
+                  HSPI_SCK, HSPI_MISO, HSPI_MOSI, CAN0_CS);
+
     // 初始化 MCP2515
     // 参数: MCP_STDEXT (标准帧+扩展帧), CAN_500KBPS (OBD2标准速率), MCP_8MHZ (晶振频率)
     if (CAN0.begin(MCP_STDEXT, CAN_SPEED, CAN_CLOCK) == CAN_OK) {
@@ -71,9 +91,11 @@ bool setupCAN() {
         // 配置过滤器
         setupCANFilters();
 
+        canInitialized = true;
         return true;
     } else {
-        Serial.println("MCP2515 初始化失败!");
+        Serial.println("MCP2515 初始化失败! 请检查SPI接线");
+        canInitialized = false;
         return false;
     }
 }
@@ -211,6 +233,11 @@ void processCANMessage() {
  * 在主循环中调用此函数以持续读取 CAN 数据
  */
 void readCANData() {
+    // 如果 CAN 未初始化成功，直接返回
+    if (!canInitialized) {
+        return;
+    }
+
     // 检查是否有可用的 CAN 消息
     if (CAN_MSGAVAIL == CAN0.checkReceive()) {
         // 读取消息到缓冲区
