@@ -85,7 +85,6 @@ extern volatile bool button3PressedFlag;
 // GT86/BRZ/FRS CAN ID 定义
 #define CAN_ID_TEMP     0x360           // 机油温度 / 冷却液温度
 #define CAN_ID_AFR      0x134           // 空燃比 (AFR)
-#define CAN_ID_VOLTAGE  0x142           // 电压
 
 // ============================================
 // CAN 数据全局变量
@@ -96,6 +95,5 @@ extern unsigned char canLen;            // CAN 数据长度
 extern unsigned char canBuf[8];         // CAN 数据缓冲区
 
 extern float afr;                       // 空燃比
-extern float voltage;                   // 电压值
 
 #endif

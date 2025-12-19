@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
@@ -22,37 +23,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dba680f-0f2b-4502-840c-2dcb503a0817" name="更改" comment="修改为使用MCP2515采集数据">
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="6dba680f-0f2b-4502-840c-2dcb503a0817" name="更改" comment="修改针脚定义">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/.sconsign313.dblite" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/.sconsign313.dblite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/FrameworkArduino/firmware_msc_fat.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/FrameworkArduino/firmware_msc_fat.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.elf" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.elf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.map" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/firmware.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/lib213/EEPROM/EEPROM.cpp.d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/lib213/EEPROM/EEPROM.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/lib213/libEEPROM.a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/libFrameworkArduino.a" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/libFrameworkArduino.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/drawClock.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/drawClock.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/drawClock.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/drawClock.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/gt86clock.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/gt86clock.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/gt86clock.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/gt86clock.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/handleModeButton.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/handleModeButton.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/handleModeButton.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/handleModeButton.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/interrupts.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/interrupts.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/interrupts.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/interrupts.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/loop.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/loop.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/loop.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/loop.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/screen.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/screen.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/screen.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/screen.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/esp32dev/src/setup.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/tmp_3z76qo6.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/esp32dev/tmpdwsl_i7h.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/build/project.checksum" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/build/project.checksum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pio/libdeps/esp32dev/integrity.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.pio/libdeps/esp32dev/integrity.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MCP2515_CAN_CN.md" beforeDir="false" afterPath="$PROJECT_DIR$/MCP2515_CAN_CN.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gt86clock.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/gt86clock.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/my_functions.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/my_functions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sensors.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensors.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +166,7 @@
       <workItem from="1766026856095" duration="207000" />
       <workItem from="1766027708957" duration="119000" />
       <workItem from="1766027849159" duration="197000" />
-      <workItem from="1766029015346" duration="2524000" />
+      <workItem from="1766029015346" duration="11300000" />
     </task>
     <task id="LOCAL-00001" summary="添加传感器接入代码逻辑">
       <option name="closed" value="true" />
@@ -207,7 +184,23 @@
       <option name="project" value="LOCAL" />
       <updated>1766040856093</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="移除.pio git 提交">
+      <option name="closed" value="true" />
+      <created>1766040952781</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1766040952781</updated>
+    </task>
+    <task id="LOCAL-00004" summary="修改针脚定义">
+      <option name="closed" value="true" />
+      <created>1766071363180</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1766071363180</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +220,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加传感器接入代码逻辑" />
     <MESSAGE value="修改为使用MCP2515采集数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改为使用MCP2515采集数据" />
+    <MESSAGE value="移除.pio git 提交" />
+    <MESSAGE value="修改针脚定义" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改针脚定义" />
   </component>
 </project>

@@ -268,14 +268,6 @@ void processCANMessage(long unsigned int id, unsigned char* buf, unsigned char l
       Serial.println(afr);
       break;
 
-    case 0x142:
-      // 电压数据
-      parseVoltage(buf);
-      Serial.print("电压: ");
-      Serial.print(voltage);
-      Serial.println("V");
-      break;
-
     default:
       // 未知 ID，可用于调试
       printCANMessage(id, buf, len);
@@ -314,7 +306,6 @@ unsigned char buf[12];
 // 解析后的数据
 int oilTemp = 0;
 int coolantTemp = 0;
-float voltage = 0;
 float afr = 14.6;
 
 // ============== 初始化 ==============
@@ -361,9 +352,6 @@ void loop() {
         break;
       case 0x134:
         parseAFR();
-        break;
-      case 0x142:
-        parseVoltage();
         break;
     }
   }

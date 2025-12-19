@@ -22,7 +22,6 @@ unsigned char canLen = 0;            // CAN 数据长度
 unsigned char canBuf[8] = {0};       // CAN 数据缓冲区
 
 float afr = 14.7;                    // 空燃比 (默认理论空燃比)
-float voltage = 12.0;                // 电压值
 
 bool canInitialized = false;         // CAN 初始化状态标志
 
@@ -41,10 +40,10 @@ void setupCANFilters() {
 
     // 掩码 1 - 应用于过滤器 2-5
     CAN0.init_Mask(1, 0, 0x07FF0000);
-    CAN0.init_Filt(2, 0, 0x01420000);    // 0x142 - 电压
-    CAN0.init_Filt(3, 0, 0x03600000);    // 0x360 - 温度 (备用)
-    CAN0.init_Filt(4, 0, 0x01340000);    // 0x134 - AFR (备用)
-    CAN0.init_Filt(5, 0, 0x01420000);    // 0x142 - 电压 (备用)
+    CAN0.init_Filt(2, 0, 0x03600000);    // 0x360 - 温度 (备用)
+    CAN0.init_Filt(3, 0, 0x01340000);    // 0x134 - AFR (备用)
+    CAN0.init_Filt(4, 0, 0x03600000);    // 0x360 - 温度 (备用)
+    CAN0.init_Filt(5, 0, 0x01340000);    // 0x134 - AFR (备用)
 
     // 设置为正常模式开始接收数据
     CAN0.setMode(MCP_NORMAL);
@@ -153,29 +152,6 @@ void parseAFR() {
 }
 
 // ============================================
-// 电压数据解析 (CAN ID: 0x142)
-// ============================================
-/**
- * @brief 解析电压数据包
- */
-void parseVoltage() {
-    // 电压解析 (根据实际 ECU 调整公式)
-    int rawValue = canBuf[0];
-    if (rawValue > 0) {
-        voltage = (float)rawValue / 10.0;
-
-        // 有效范围检查
-        if (voltage < 8.0 || voltage > 16.0) {
-            voltage = 12.0;  // 超出范围则使用默认值
-        }
-
-        #ifdef DEBUG_CAN
-        Serial.printf("[CAN] 电压: %.1fV\n", voltage);
-        #endif
-    }
-}
-
-// ============================================
 // 调试输出 - 打印原始 CAN 消息
 // ============================================
 void printCANMessage() {
@@ -209,10 +185,6 @@ void processCANMessage() {
 
         case CAN_ID_AFR:        // 0x134 - 空燃比
             parseAFR();
-            break;
-
-        case CAN_ID_VOLTAGE:    // 0x142 - 电压
-            parseVoltage();
             break;
 
         default:

@@ -59,7 +59,6 @@ void printCANMessage();     // 打印 CAN 消息 (调试用)
 // CAN 数据解析函数
 void parseTemperature();    // 解析温度数据 (0x360)
 void parseAFR();            // 解析空燃比数据 (0x134)
-void parseVoltage();        // 解析电压数据 (0x142)
 
 // 兼容旧接口的传感器读取函数 (保留但为空实现)
 void readSensor1();
